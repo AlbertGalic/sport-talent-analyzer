@@ -3,25 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal Info - Sport Talent Analyzer</title>
+    <title>Personal Info</title>
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="futuristic-bg">
-    <div class="glass-panel">
-        <h2 class="title-glow">🧬 Enter Your Details</h2>
-        <form class="info-form" action="sprint_test_screen.html">
-            <input type="text" name="first_name" placeholder="First Name" required />
-            <input type="text" name="last_name" placeholder="Last Name" required />
-            <select name="gender" required>
-                <option value="" disabled selected>Select Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select>
-            <input type="number" name="age" placeholder="Age" required />
-            <input type="number" name="height" placeholder="Height (cm)" required />
-            <input type="number" name="weight" placeholder="Weight (kg)" required />
-            <button type="submit" class="nav-btn">➡ Continue</button>
+<body class="futuristic">
+    <div class="card">
+        <h1>Personal Information</h1>
+        <form action="sprint_test_screen.html" method="get">
+            <input type="text" placeholder="First Name" required />
+            <input type="text" placeholder="Last Name" required />
+            <input type="number" placeholder="Age" required />
+            <input type="text" placeholder="Gender" required />
+            <input type="number" placeholder="Height (cm)" required />
+            <input type="number" placeholder="Weight (kg)" required />
+            <button type="submit" class="btn">Next</button>
         </form>
     </div>
 </body>

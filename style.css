@@ -1,69 +1,50 @@
-body {
+
+body.futuristic {
   margin: 0;
   padding: 0;
   font-family: 'Lexend', sans-serif;
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: white;
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
-.intro-container {
-  text-align: center;
+.card {
   background: rgba(255, 255, 255, 0.05);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 20px rgba(0,255,255,0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
 }
-
 h1 {
-  font-size: 32px;
-  margin-bottom: 20px;
-  color: #00ffff;
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
-
 p {
-  font-size: 18px;
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
 }
-
-.language-buttons a {
-  display: inline-block;
-  margin: 10px;
-  padding: 12px 20px;
-  background: #00ffff;
-  color: #000;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s ease;
-}
-
-.language-buttons a:hover {
-  background: #0099cc;
-  color: white;
-}
-.neon-button {
-  background: #00c6ff;
-  color: black;
-  padding: 12px 24px;
-  margin: 10px;
+input, select {
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
   border: none;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff, 0 0 30px #00c6ff;
+  border-radius: 0.5rem;
 }
-
-.neon-button:hover {
-  background: #0072ff;
-  color: white;
-  box-shadow: 0 0 20px #0072ff, 0 0 40px #0072ff, 0 0 60px #0072ff;
+.btn {
+  display: inline-block;
+  background: #00c6ff;
+  color: #fff;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+.language-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
