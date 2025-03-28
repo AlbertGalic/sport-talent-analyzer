@@ -47,3 +47,23 @@ p {
   background: #0099cc;
   color: white;
 }
+.neon-button {
+  background: #00c6ff;
+  color: black;
+  padding: 12px 24px;
+  margin: 10px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff, 0 0 30px #00c6ff;
+}
+
+.neon-button:hover {
+  background: #0072ff;
+  color: white;
+  box-shadow: 0 0 20px #0072ff, 0 0 40px #0072ff, 0 0 60px #0072ff;
+}
