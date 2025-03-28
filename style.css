@@ -1,54 +1,49 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Lexend', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
-body.futuristic-bg {
-    margin: 0;
-    font-family: 'Lexend', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+.intro-container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
-.glass-panel {
-    background: rgba(255, 255, 255, 0.08);
-    padding: 2rem;
-    border-radius: 20px;
-    backdrop-filter: blur(12px);
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-    width: 90%;
-    max-width: 500px;
-    text-align: center;
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #00ffff;
 }
-.title-glow {
-    font-size: 2rem;
-    color: #00ffff;
-    text-shadow: 0 0 10px #00ffff;
+
+p {
+  font-size: 18px;
+  margin-bottom: 30px;
 }
-.instruction {
-    margin-bottom: 1.2rem;
+
+.language-buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 12px 20px;
+  background: #00ffff;
+  color: #000;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s ease;
 }
-.result-form input, .info-form input, .info-form select {
-    width: 100%;
-    padding: 0.75rem;
-    margin: 0.5rem 0;
-    border-radius: 10px;
-    border: none;
-    font-size: 1rem;
-}
-.nav-btn {
-    display: inline-block;
-    padding: 0.8rem 1.5rem;
-    margin-top: 1rem;
-    background-color: #00ffff;
-    color: #000;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    text-decoration: none;
-}
-.result-card {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-top: 1rem;
-    color: #0ff;
+
+.language-buttons a:hover {
+  background: #0099cc;
+  color: white;
 }
