@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Analysis</title>
+</head>
+<body>
+  <h1>Final Analysis</h1>
+  <div id="result"></div>
+  <script>
+    async function analyze() {
+      const sprint = parseFloat(localStorage.getItem('sprint'));
+      const jump = parseFloat(localStorage.getItem('jump'));
+      const agility = parseFloat(localStorage.getItem('agility'));
+      const beep = parseFloat(localStorage.getItem('beep'));
+
+      const res = await fetch("http://127.0.0.1:8000/analyze", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sprint, jump, agility, beep })
+      });
+
+      const data = await res.json();
+      document.getElementById("result").innerHTML = `<h2>${data.sport}</h2><p>${data.explanation}</p>`;
+    }
+    analyze();
+  </script>
+</body>
+</html>
