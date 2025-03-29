@@ -56,6 +56,7 @@
       font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
+      margin-top: 10px;
     }
 
     .btn:hover {
@@ -78,10 +79,52 @@
     <button class="btn" onclick="finishTest()">Završi</button>
 
     <div id="result" class="result" style="display:none;"></div>
+    <div id="grade" class="result" style="display:none;"></div>
+
     <button class="btn" style="display:none;" id="nextBtn" onclick="next()">Nastavi</button>
   </div>
 
   <script>
+    function getSprintGrade(avg, age, gender) {
+      age = parseInt(age);
+      const isChild = age <= 14;
+      const isAdult = age >= 15;
+
+      if (isChild) {
+        if (gender === 'male') {
+          if (avg < 3.4) return 'Odličan';
+          if (avg <= 3.7) return 'Dobar';
+          if (avg <= 4.1) return 'Srednji';
+          if (avg <= 4.5) return 'Dovoljan';
+          return 'Loš';
+        } else {
+          if (avg < 3.6) return 'Odličan';
+          if (avg <= 3.9) return 'Dobar';
+          if (avg <= 4.3) return 'Srednji';
+          if (avg <= 4.7) return 'Dovoljan';
+          return 'Loš';
+        }
+      }
+
+      if (isAdult) {
+        if (gender === 'male') {
+          if (avg < 3.0) return 'Odličan';
+          if (avg <= 3.3) return 'Dobar';
+          if (avg <= 3.7) return 'Srednji';
+          if (avg <= 4.1) return 'Dovoljan';
+          return 'Loš';
+        } else {
+          if (avg < 3.2) return 'Odličan';
+          if (avg <= 3.5) return 'Dobar';
+          if (avg <= 3.9) return 'Srednji';
+          if (avg <= 4.3) return 'Dovoljan';
+          return 'Loš';
+        }
+      }
+
+      return 'Nepoznato';
+    }
+
     function finishTest() {
       const sprint3 = parseFloat(document.getElementById('sprint3').value);
       if (isNaN(sprint3)) {
@@ -98,12 +141,20 @@
       const average = ((s1 + s2 + s3) / 3).toFixed(2);
       localStorage.setItem('sprint_average', average);
 
+      const age = localStorage.getItem('age');
+      const gender = localStorage.getItem('gender'); // 'male' ili 'female'
+
+      const grade = getSprintGrade(average, age, gender);
+
       document.getElementById('result').innerText = `Prosječno vrijeme sprinta: ${average} sekundi`;
+      document.getElementById('grade').innerText = `Ocjena: ${grade}`;
+
       document.getElementById('result').style.display = 'block';
+      document.getElementById('grade').style.display = 'block';
       document.getElementById('nextBtn').style.display = 'block';
 
       document.querySelector("input").style.display = "none";
-      document.querySelector(".btn").style.display = "none";
+      document.querySelector("button").style.display = "none";
     }
 
     function next() {
