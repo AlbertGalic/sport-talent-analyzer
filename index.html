@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sport Talent Analyzer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sport Talent Analyzer - Login</title>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
   <style>
     body {
       font-family: 'Lexend', sans-serif;
@@ -15,74 +17,25 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      text-align: center;
     }
 
     .container {
       background: rgba(255, 255, 255, 0.05);
       padding: 40px;
       border-radius: 20px;
+      max-width: 400px;
       width: 100%;
-      max-width: 420px;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
     }
 
-    .toggle-buttons {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
-    }
-
-    .toggle-buttons button {
-      flex: 1;
-      padding: 10px;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-      border-bottom: 2px solid transparent;
-    }
-
-    .toggle-buttons button.active {
-      border-bottom: 2px solid #00c6ff;
-      font-weight: bold;
-    }
-
-    .container h1 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-
-    .container p {
-      font-size: 14px;
-      color: #ccc;
+    h2 {
       margin-bottom: 20px;
     }
 
-    .input-group {
-      margin-bottom: 15px;
-      text-align: left;
-    }
-
-    .input-group label {
-      font-size: 14px;
-    }
-
-    .input-group input {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      margin-top: 5px;
-    }
-
-    .submit-btn {
+    .btn {
       width: 100%;
       padding: 12px;
       border: none;
@@ -93,9 +46,10 @@
       font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
+      margin-top: 10px;
     }
 
-    .submit-btn:hover {
+    .btn:hover {
       background: #0072ff;
       color: white;
     }
@@ -103,72 +57,42 @@
 </head>
 <body>
   <div class="container">
-    <h1>Sport Talent Analyzer</h1>
-    <p>Unlock your Athletic Potential</p>
-
-    <div class="toggle-buttons">
-      <button id="loginToggle" class="active">Login</button>
-      <button id="signupToggle">Sign Up</button>
-    </div>
-
-    <form id="authForm">
-      <div class="input-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" required />
-      </div>
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required />
-      </div>
-      <div class="input-group" id="confirmPasswordGroup" style="display: none;">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" />
-      </div>
-      <button type="submit" class="submit-btn" id="submitBtn">Login</button>
-    </form>
+    <h2>Sport Talent Analyzer - Login</h2>
+    <button class="btn" id="google-login-btn">Login with Google</button>
   </div>
 
   <script>
-    const loginToggle = document.getElementById("loginToggle");
-    const signupToggle = document.getElementById("signupToggle");
-    const confirmPasswordGroup = document.getElementById("confirmPasswordGroup");
-    const submitBtn = document.getElementById("submitBtn");
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyBzqShxa2y30NEEHqAax30_MTnD6iomQ_Q",
+      authDomain: "sport-talent-analyzer.firebaseapp.com",
+      projectId: "sport-talent-analyzer",
+      storageBucket: "sport-talent-analyzer.firebasestorage.app",
+      messagingSenderId: "621596826994",
+      appId: "1:621596826994:web:b63f05ac30381b76a211eb",
+      measurementId: "G-B0S503WS0J"
+    };
 
-    let isLogin = true;
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const analytics = firebase.analytics(app);
 
-    loginToggle.addEventListener("click", () => {
-      isLogin = true;
-      loginToggle.classList.add("active");
-      signupToggle.classList.remove("active");
-      confirmPasswordGroup.style.display = "none";
-      submitBtn.textContent = "Login";
-    });
+    // Google sign-in provider
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-    signupToggle.addEventListener("click", () => {
-      isLogin = false;
-      signupToggle.classList.add("active");
-      loginToggle.classList.remove("active");
-      confirmPasswordGroup.style.display = "block";
-      submitBtn.textContent = "Sign Up";
-    });
-
-    document.getElementById("authForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      if (!isLogin) {
-        const confirmPassword = document.getElementById("confirmPassword").value;
-        if (password !== confirmPassword) {
-          alert("Passwords do not match!");
-          return;
-        }
-      }
-
-      alert(isLogin ? `Logging in ${email}` : `Signing up ${email}`);
-      // Ovdje ide poziv backendu ako želiš povezati kasnije
+    document.getElementById('google-login-btn').addEventListener('click', () => {
+      auth.signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+          console.log("User signed in:", user.displayName, user.email);
+          localStorage.setItem('userEmail', user.email);
+          window.location.href = 'personal_info_screen.html';  // Redirect after successful login
+        })
+        .catch((error) => {
+          console.error("Error during sign-in:", error);
+        });
     });
   </script>
 </body>
 </html>
-
