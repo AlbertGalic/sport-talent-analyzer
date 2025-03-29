@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sprint Test - Uvod</title>
+  <title>Sprint Test - Intro</title>
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -60,16 +60,18 @@
 </head>
 <body>
   <div class="container">
-    <h2>Sprint Test - Uvod</h2>
-    <p>
-      Sprint test se izvodi na udaljenosti od 20 metara. Test se ponavlja <strong>3 puta</strong>, s pauzom od <strong>5 minuta</strong> između svakog sprinta.<br><br>
-      Cilj je izmjeriti brzinu i konzistentnost sprint performansi.<br><br>
-      Na svakoj sljedećoj stranici unosiš vrijeme sprinta, a aplikacija će automatski pokrenuti odbrojavanje za odmor prije sljedećeg pokušaja.
-    </p>
-    <button class="btn" onclick="startTest()">Započni Sprint Test</button>
+    <h2 id="introTitle"></h2>
+    <p id="introDescription"></p>
+    <button class="btn" onclick="startTest()" id="continueBtn"></button>
   </div>
 
+  <script src="translations.js"></script>
   <script>
+    const lang = localStorage.getItem('selectedLanguage') || 'en';
+    document.getElementById('introTitle').innerText = translations[lang].title;
+    document.getElementById('introDescription').innerText = translations[lang].description;
+    document.getElementById('continueBtn').innerText = translations[lang].button;
+
     function startTest() {
       window.location.href = "sprint_1_input.html";
     }
