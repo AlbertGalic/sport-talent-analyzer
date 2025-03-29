@@ -4,9 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sport Talent Analyzer - Login</title>
+
+  <!-- Firebase CDN -->
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-analytics.js"></script>
+
+  <!-- Font Awesome za ikone -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
+
   <style>
     body {
       font-family: 'Lexend', sans-serif;
@@ -32,77 +40,145 @@
     }
 
     h2 {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .google-btn {
+    input {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      background: #00c6ff;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #0072ff;
+      color: white;
+    }
+
+    .social-login {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      gap: 10px;
+    }
+
+    .social-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 12px;
+      background: white;
+      color: #333;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: white;
-      color: #444;
-      border: none;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-      width: 100%;
+      gap: 10px;
     }
 
-    .google-btn:hover {
+    .social-btn:hover {
       background: #e0e0e0;
     }
 
-    .google-btn img {
-      width: 20px;
-      height: 20px;
-      margin-right: 12px;
+    .social-btn i {
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
   <div class="container">
     <h2>Sport Talent Analyzer</h2>
-    <button class="google-btn" id="google-login-btn">
-      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" />
-      Sign in with Google
-    </button>
+    <p>Prijava / Registracija</p>
+
+    <!-- Klasični login -->
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Lozinka" required />
+    <button class="btn" onclick="manualLogin()">Prijavi se</button>
+
+    <!-- Social logini -->
+    <div class="social-login">
+      <button class="social-btn" onclick="loginWithGoogle()">
+        <i class="fab fa-google"></i> Google
+      </button>
+      <button class="social-btn" onclick="loginWithFacebook()">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </button>
+    </div>
   </div>
 
   <script>
     // Firebase config
     const firebaseConfig = {
-      apiKey: "AIzaSyBzqShxa2y30NEEHqAax30_MTnD6iomQ_Q",
+      apiKey: "AIzaSyBz9hxa2y30NEEhqAax3eMTnD6iomQ_Q",
       authDomain: "sport-talent-analyzer.firebaseapp.com",
       projectId: "sport-talent-analyzer",
-      storageBucket: "sport-talent-analyzer.firebasestorage.app",
+      storageBucket: "sport-talent-analyzer.appspot.com",
       messagingSenderId: "621596826994",
-      appId: "1:621596826994:web:b63f05ac30381b76a211eb",
-      measurementId: "G-B0S503WS0J"
+      appId: "1:621596826994:web:b63f65ac30381b76a211eb",
+      measurementId: "G-BB5S03WSJ"
     };
 
-    // Init Firebase
+    // Inicijalizacija Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
-    const analytics = firebase.analytics(app);
 
-    const provider = new firebase.auth.GoogleAuthProvider();
+    function manualLogin() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
 
-    document.getElementById('google-login-btn').addEventListener('click', () => {
-      auth.signInWithPopup(provider)
-        .then((result) => {
-          const user = result.user;
-          localStorage.setItem('userEmail', user.email);
-          console.log("Prijavljen:", user.email);
-          window.location.href = "personal_info_screen.html";
-        })
-        .catch((error) => {
-          console.error("Greška pri prijavi:", error);
-        });
-    });
+      if (!email || !password) {
+        alert("Molimo unesite email i lozinku.");
+        return;
+      }
+
+      // Ovdje možeš implementirati Firebase email/password autentikaciju ako želiš
+      localStorage.setItem('userEmail', email);
+      window.location.href = "personal_info_screen.html";
+    }
+
+    function loginWithGoogle() {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider).then((result) => {
+        localStorage.setItem('userEmail', result.user.email);
+        window.location.href = "personal_info_screen.html";
+      }).catch((error) => {
+        console.error(error.message);
+        alert("Greška pri Google prijavi.");
+      });
+    }
+
+    function loginWithFacebook() {
+      const provider = new firebase.auth.FacebookAuthProvider();
+      auth.signInWithPopup(provider).then((result) => {
+        localStorage.setItem('userEmail', result.user.email);
+        window.location.href = "personal_info_screen.html";
+      }).catch((error) => {
+        console.error(error.message);
+        alert("Greška pri Facebook prijavi.");
+      });
+    }
   </script>
 </body>
 </html>
 
+  
