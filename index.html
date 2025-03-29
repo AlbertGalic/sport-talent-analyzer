@@ -32,37 +32,47 @@
     }
 
     h2 {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
-    .btn {
-      width: 100%;
-      padding: 12px;
+    .google-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: white;
+      color: #444;
       border: none;
-      border-radius: 12px;
-      background: #00c6ff;
-      color: black;
-      font-weight: bold;
+      padding: 12px 20px;
+      border-radius: 8px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 10px;
+      width: 100%;
     }
 
-    .btn:hover {
-      background: #0072ff;
-      color: white;
+    .google-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .google-btn img {
+      width: 20px;
+      height: 20px;
+      margin-right: 12px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Sport Talent Analyzer - Login</h2>
-    <button class="btn" id="google-login-btn">Login with Google</button>
+    <h2>Sport Talent Analyzer</h2>
+    <button class="google-btn" id="google-login-btn">
+      <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google logo" />
+      Sign in with Google
+    </button>
   </div>
 
   <script>
-    // Your Firebase config
+    // Firebase config
     const firebaseConfig = {
       apiKey: "AIzaSyBzqShxa2y30NEEHqAax30_MTnD6iomQ_Q",
       authDomain: "sport-talent-analyzer.firebaseapp.com",
@@ -73,26 +83,26 @@
       measurementId: "G-B0S503WS0J"
     };
 
-    // Initialize Firebase
+    // Init Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
     const analytics = firebase.analytics(app);
 
-    // Google sign-in provider
     const provider = new firebase.auth.GoogleAuthProvider();
 
     document.getElementById('google-login-btn').addEventListener('click', () => {
       auth.signInWithPopup(provider)
         .then((result) => {
           const user = result.user;
-          console.log("User signed in:", user.displayName, user.email);
           localStorage.setItem('userEmail', user.email);
-          window.location.href = 'personal_info_screen.html';  // Redirect after successful login
+          console.log("Prijavljen:", user.email);
+          window.location.href = "personal_info_screen.html";
         })
         .catch((error) => {
-          console.error("Error during sign-in:", error);
+          console.error("Greška pri prijavi:", error);
         });
     });
   </script>
 </body>
 </html>
+
