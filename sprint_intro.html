@@ -60,17 +60,15 @@
 </head>
 <body>
   <div class="container">
-    <h2 id="introTitle"></h2>
-    <p id="introDescription"></p>
-    <button class="btn" onclick="startTest()" id="continueBtn"></button>
+    <h2 id="sprint_intro_title"></h2>
+    <p id="sprint_intro_description"></p>
+    <button class="btn" onclick="startTest()" id="continue"></button>
   </div>
 
   <script src="translations.js"></script>
+  <script src="lang.js"></script>
   <script>
-    const lang = localStorage.getItem('selectedLanguage') || 'en';
-    document.getElementById('introTitle').innerText = translations[lang].title;
-    document.getElementById('introDescription').innerText = translations[lang].description;
-    document.getElementById('continueBtn').innerText = translations[lang].button;
+    applyTranslations();
 
     function startTest() {
       window.location.href = "sprint_1_input.html";
