@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sprint Test - Uvod</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 40px;
+      border-radius: 20px;
+      max-width: 600px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      color: #ccc;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 12px;
+      background: #00c6ff;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #0072ff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Sprint Test - Uvod</h2>
+    <p>
+      Sprint test se izvodi na udaljenosti od 20 metara. Test se ponavlja <strong>3 puta</strong>, s pauzom od <strong>5 minuta</strong> između svakog sprinta.<br><br>
+      Cilj je izmjeriti brzinu i konzistentnost sprint performansi.<br><br>
+      Na svakoj sljedećoj stranici unosiš vrijeme sprinta, a aplikacija će automatski pokrenuti odbrojavanje za odmor prije sljedećeg pokušaja.
+    </p>
+    <button class="btn" onclick="startTest()">Započni Sprint Test</button>
+  </div>
+
+  <script>
+    function startTest() {
+      window.location.href = "sprint_1_input.html";
+    }
+  </script>
+</body>
+</html>
