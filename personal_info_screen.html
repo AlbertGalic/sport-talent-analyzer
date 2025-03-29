@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -15,26 +15,28 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      padding: 20px;
+      text-align: center;
     }
 
     .container {
       background: rgba(255, 255, 255, 0.05);
       padding: 40px;
       border-radius: 20px;
-      width: 100%;
       max-width: 500px;
+      width: 100%;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.1);
     }
 
     .container h2 {
-      text-align: center;
       margin-bottom: 30px;
     }
 
     .form-group {
       margin-bottom: 15px;
+      text-align: left;
     }
 
     .form-group label {
@@ -42,7 +44,8 @@
       margin-bottom: 5px;
     }
 
-    .form-group input, .form-group select {
+    .form-group input,
+    .form-group select {
       width: 100%;
       padding: 10px;
       border-radius: 10px;
@@ -77,69 +80,93 @@
 </head>
 <body>
   <div class="container">
-    <h2>Personal Information</h2>
+    <h2>Unesi Osobne Podatke</h2>
     <form id="personalInfoForm">
       <div class="form-group">
-        <label for="firstName">First Name</label>
+        <label for="firstName">Ime</label>
         <input type="text" id="firstName" required />
       </div>
+
       <div class="form-group">
-        <label for="lastName">Last Name</label>
+        <label for="lastName">Prezime</label>
         <input type="text" id="lastName" required />
       </div>
+
       <div class="form-group">
-        <label for="height">Height (cm)</label>
+        <label for="age">Dob</label>
+        <input type="number" id="age" required />
+      </div>
+
+      <div class="form-group">
+        <label for="height">Visina (cm)</label>
         <input type="number" id="height" required />
       </div>
+
       <div class="form-group">
-        <label for="weight">Weight (kg)</label>
+        <label for="weight">Težina (kg)</label>
         <input type="number" id="weight" required />
       </div>
+
       <div class="form-group">
-        <label for="gender">Gender</label>
+        <label for="gender">Spol</label>
         <select id="gender" required>
-          <option value="">Select</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
+          <option value="">Odaberi</option>
+          <option value="male">Muški</option>
+          <option value="female">Ženski</option>
         </select>
       </div>
+
       <div class="form-group">
-        <label for="dominantHand">Dominant Hand</label>
+        <label for="dominantHand">Dominantna Ruka</label>
         <select id="dominantHand" required>
-          <option value="">Select</option>
-          <option value="left">Left</option>
-          <option value="right">Right</option>
+          <option value="">Odaberi</option>
+          <option value="left">Lijeva</option>
+          <option value="right">Desna</option>
         </select>
       </div>
+
       <div class="form-group">
-        <label for="dominantLeg">Dominant Leg</label>
+        <label for="dominantLeg">Dominantna Noga</label>
         <select id="dominantLeg" required>
-          <option value="">Select</option>
-          <option value="left">Left</option>
-          <option value="right">Right</option>
+          <option value="">Odaberi</option>
+          <option value="left">Lijeva</option>
+          <option value="right">Desna</option>
         </select>
       </div>
+
       <div class="form-group">
-        <label for="bodyType">Body Type</label>
+        <label for="bodyType">Tjelesni Tip</label>
         <select id="bodyType" required>
-          <option value="">Select</option>
-          <option value="ectomorph">Ectomorph</option>
-          <option value="mesomorph">Mesomorph</option>
-          <option value="endomorph">Endomorph</option>
+          <option value="">Odaberi</option>
+          <option value="ectomorph">Ektomorf</option>
+          <option value="mesomorph">Mezomorf</option>
+          <option value="endomorph">Endomorf</option>
         </select>
       </div>
-      <button class="submit-btn" type="submit">Continue</button>
+
+      <button class="submit-btn" type="submit">Nastavi</button>
     </form>
   </div>
 
   <script>
     document.getElementById("personalInfoForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      // Ovdje možemo slati podatke na backend ili spremiti u localStorage
-      alert("Info saved. Ready for next step!");
-      window.location.href = "language_select.html"; // Ili sljedeći ekran koji ide
+
+      localStorage.setItem('firstName', document.getElementById('firstName').value);
+      localStorage.setItem('lastName', document.getElementById('lastName').value);
+      localStorage.setItem('age', document.getElementById('age').value);
+      localStorage.setItem('height', document.getElementById('height').value);
+      localStorage.setItem('weight', document.getElementById('weight').value);
+      localStorage.setItem('gender', document.getElementById('gender').value);
+      localStorage.setItem('dominantHand', document.getElementById('dominantHand').value);
+      localStorage.setItem('dominantLeg', document.getElementById('dominantLeg').value);
+      localStorage.setItem('bodyType', document.getElementById('bodyType').value);
+
+      window.location.href = "sprint_intro.html";
     });
   </script>
 </body>
 </html>
 
+
+   
