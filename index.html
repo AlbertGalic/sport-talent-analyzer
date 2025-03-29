@@ -39,6 +39,17 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
+    select {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
     h2 {
       margin-bottom: 20px;
     }
@@ -107,6 +118,29 @@
 </head>
 <body>
   <div class="container">
+    <select id="languageSelector">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="it">Italiano</option>
+      <option value="es">Español</option>
+      <option value="pt">Português</option>
+      <option value="zh">中文 (Chinese)</option>
+      <option value="ja">日本語 (Japanese)</option>
+      <option value="ru">Русский</option>
+      <option value="ar">العربية</option>
+      <option value="tr">Türkçe</option>
+      <option value="ko">한국어 (Korean)</option>
+      <option value="hi">हिन्दी (Hindi)</option>
+      <option value="nl">Nederlands</option>
+      <option value="pl">Polski</option>
+      <option value="el">Ελληνικά</option>
+      <option value="sr">Српски</option>
+      <option value="bs">Bosanski</option>
+      <option value="mk">Македонски</option>
+      <option value="hr" selected>Hrvatski</option>
+    </select>
+
     <h2>Sport Talent Analyzer</h2>
     <p>Prijava / Registracija</p>
 
@@ -138,10 +172,15 @@
       measurementId: "G-BB5S03WSJ"
     };
 
-    // Inicijalizacija Firebase
     const app = firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
+    // Jezik
+    document.getElementById('languageSelector').addEventListener('change', function () {
+      localStorage.setItem('selectedLanguage', this.value);
+    });
+
+    // Prijava email+lozinka
     function manualLogin() {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
@@ -151,7 +190,6 @@
         return;
       }
 
-      // Ovdje možeš implementirati Firebase email/password autentikaciju ako želiš
       localStorage.setItem('userEmail', email);
       window.location.href = "personal_info_screen.html";
     }
@@ -180,5 +218,3 @@
   </script>
 </body>
 </html>
-
-  
