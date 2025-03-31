@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Personal Info</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     body {
       font-family: 'Lexend', sans-serif;
@@ -15,13 +15,11 @@
       align-items: center;
       height: 100vh;
       margin: 0;
-      padding: 20px;
       text-align: center;
     }
-
     .container {
       background: rgba(255, 255, 255, 0.05);
-      padding: 40px;
+      padding: 30px;
       border-radius: 20px;
       max-width: 500px;
       width: 100%;
@@ -29,37 +27,17 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.1);
     }
-
-    .container h2 {
-      margin-bottom: 30px;
-    }
-
-    .form-group {
-      margin-bottom: 15px;
-      text-align: left;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .form-group input,
-    .form-group select {
+    input, select {
       width: 100%;
       padding: 10px;
       border-radius: 10px;
       border: none;
       background: rgba(255,255,255,0.1);
       color: white;
+      margin-bottom: 15px;
+      font-size: 16px;
     }
-
-    .form-group select option {
-      color: black;
-    }
-
-    .submit-btn {
-      width: 100%;
+    .btn {
       padding: 12px;
       border: none;
       border-radius: 12px;
@@ -69,10 +47,9 @@
       font-size: 16px;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 10px;
+      width: 100%;
     }
-
-    .submit-btn:hover {
+    .btn:hover {
       background: #0072ff;
       color: white;
     }
@@ -80,93 +57,25 @@
 </head>
 <body>
   <div class="container">
-    <h2>Unesi Osobne Podatke</h2>
-    <form id="personalInfoForm">
-      <div class="form-group">
-        <label for="firstName">Ime</label>
-        <input type="text" id="firstName" required />
-      </div>
-
-      <div class="form-group">
-        <label for="lastName">Prezime</label>
-        <input type="text" id="lastName" required />
-      </div>
-
-      <div class="form-group">
-        <label for="age">Dob</label>
-        <input type="number" id="age" required />
-      </div>
-
-      <div class="form-group">
-        <label for="height">Visina (cm)</label>
-        <input type="number" id="height" required />
-      </div>
-
-      <div class="form-group">
-        <label for="weight">Težina (kg)</label>
-        <input type="number" id="weight" required />
-      </div>
-
-      <div class="form-group">
-        <label for="gender">Spol</label>
-        <select id="gender" required>
-          <option value="">Odaberi</option>
-          <option value="male">Muški</option>
-          <option value="female">Ženski</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="dominantHand">Dominantna Ruka</label>
-        <select id="dominantHand" required>
-          <option value="">Odaberi</option>
-          <option value="left">Lijeva</option>
-          <option value="right">Desna</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="dominantLeg">Dominantna Noga</label>
-        <select id="dominantLeg" required>
-          <option value="">Odaberi</option>
-          <option value="left">Lijeva</option>
-          <option value="right">Desna</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="bodyType">Tjelesni Tip</label>
-        <select id="bodyType" required>
-          <option value="">Odaberi</option>
-          <option value="ectomorph">Ektomorf</option>
-          <option value="mesomorph">Mezomorf</option>
-          <option value="endomorph">Endomorf</option>
-        </select>
-      </div>
-
-      <button class="submit-btn" type="submit">Nastavi</button>
-    </form>
+    <h2 id="personal_info_title"></h2>
+    <input type="text" placeholder="First Name" id="firstName" />
+    <input type="text" placeholder="Last Name" id="lastName" />
+    <input type="number" placeholder="Age" id="age" />
+    <input type="number" placeholder="Height (cm)" id="height" />
+    <input type="number" placeholder="Weight (kg)" id="weight" />
+    <select id="gender">
+      <option value="male" id="option_male"></option>
+      <option value="female" id="option_female"></option>
+    </select>
+    <button class="btn" onclick="continueToNext()" id="continue_button"></button>
   </div>
-
+  <script src="translations.js"></script>
+  <script src="lang.js"></script>
   <script>
-    document.getElementById("personalInfoForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      localStorage.setItem('firstName', document.getElementById('firstName').value);
-      localStorage.setItem('lastName', document.getElementById('lastName').value);
-      localStorage.setItem('age', document.getElementById('age').value);
-      localStorage.setItem('height', document.getElementById('height').value);
-      localStorage.setItem('weight', document.getElementById('weight').value);
-      localStorage.setItem('gender', document.getElementById('gender').value);
-      localStorage.setItem('dominantHand', document.getElementById('dominantHand').value);
-      localStorage.setItem('dominantLeg', document.getElementById('dominantLeg').value);
-      localStorage.setItem('bodyType', document.getElementById('bodyType').value);
-
+    applyTranslations();
+    function continueToNext() {
       window.location.href = "sprint_intro.html";
-    });
+    }
   </script>
 </body>
 </html>
-
-
-   
