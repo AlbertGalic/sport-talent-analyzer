@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Usporedba Rezultata</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      max-width: 700px;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+    th, td {
+      border: 1px solid #fff;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h2>📊 Sprint Test – Usporedba s normama</h2>
+
+  <table>
+    <thead>
+      <tr><th colspan="2">👦 Dječaci (8–14 god.)</th></tr>
+      <tr><th>Vrijeme (s)</th><th>Ocjena</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&lt; 3.4</td><td>Odličan</td></tr>
+      <tr><td>3.4 – 3.7</td><td>Dobar</td></tr>
+      <tr><td>3.8 – 4.1</td><td>Srednji</td></tr>
+      <tr><td>4.2 – 4.5</td><td>Dovoljan</td></tr>
+      <tr><td>≥ 4.6</td><td>Loš</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr><th colspan="2">👧 Djevojčice (8–14 god.)</th></tr>
+      <tr><th>Vrijeme (s)</th><th>Ocjena</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&lt; 3.6</td><td>Odličan</td></tr>
+      <tr><td>3.6 – 3.9</td><td>Dobar</td></tr>
+      <tr><td>4.0 – 4.3</td><td>Srednji</td></tr>
+      <tr><td>4.4 – 4.7</td><td>Dovoljan</td></tr>
+      <tr><td>≥ 4.8</td><td>Loš</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr><th colspan="2">👨 Muškarci (15+ god.)</th></tr>
+      <tr><th>Vrijeme (s)</th><th>Ocjena</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&lt; 3.0</td><td>Odličan</td></tr>
+      <tr><td>3.0 – 3.3</td><td>Dobar</td></tr>
+      <tr><td>3.4 – 3.7</td><td>Srednji</td></tr>
+      <tr><td>3.8 – 4.1</td><td>Dovoljan</td></tr>
+      <tr><td>≥ 4.2</td><td>Loš</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+      <tr><th colspan="2">👩 Žene (15+ god.)</th></tr>
+      <tr><th>Vrijeme (s)</th><th>Ocjena</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&lt; 3.2</td><td>Odličan</td></tr>
+      <tr><td>3.2 – 3.5</td><td>Dobar</td></tr>
+      <tr><td>3.6 – 3.9</td><td>Srednji</td></tr>
+      <tr><td>4.0 – 4.3</td><td>Dovoljan</td></tr>
+      <tr><td>≥ 4.4</td><td>Loš</td></tr>
+    </tbody>
+  </table>
+</body>
+</html>
