@@ -58,29 +58,38 @@
 <body>
   <div class="container">
     <h2 id="personal_info_title"></h2>
-    <input type="text" placeholder="First Name" id="firstName" />
-    <input type="text" placeholder="Last Name" id="lastName" />
-    <input type="number" placeholder="Age" id="age" />
-    <input type="number" placeholder="Height (cm)" id="height" />
-    <input type="number" placeholder="Weight (kg)" id="weight" />
+    <input type="text" placeholder="" id="firstName" />
+    <input type="text" placeholder="" id="lastName" />
+    <input type="number" placeholder="" id="age" />
+    <input type="number" placeholder="" id="height" />
+    <input type="number" placeholder="" id="weight" />
+
     <select id="gender">
       <option value="male" id="option_male"></option>
       <option value="female" id="option_female"></option>
     </select>
+
+    <select id="dominantHand">
+      <option value="right" id="option_right_hand"></option>
+      <option value="left" id="option_left_hand"></option>
+    </select>
+
+    <select id="dominantFoot">
+      <option value="right" id="option_right_foot"></option>
+      <option value="left" id="option_left_foot"></option>
+    </select>
+
     <button class="btn" onclick="continueToNext()" id="continue_button"></button>
   </div>
+
   <script src="translations.js"></script>
   <script src="lang.js"></script>
   <script>
     applyTranslations();
+
     function continueToNext() {
       window.location.href = "sprint_intro.html";
     }
   </script>
 </body>
 </html>
-<script src="translations.js"></script>
-<script src="lang.js"></script>
-<script>
-  applyTranslations();
-</script>
