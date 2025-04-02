@@ -3,80 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sport Talent Analyzer - Login</title>
-
-  <!-- Firebase CDN -->
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js"></script>
-
-  <!-- Font Awesome za ikone -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Sport Talent Analyzer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet"/>
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Lexend', sans-serif;
+      height: 100vh;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      color: white;
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      margin: 0;
+      color: white;
       text-align: center;
     }
 
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
     .container {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 40px;
-      border-radius: 20px;
-      max-width: 400px;
-      width: 100%;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.05);
+      padding: 50px;
+      border-radius: 30px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
       border: 1px solid rgba(255,255,255,0.1);
+      max-width: 600px;
+      width: 90%;
     }
 
-    select {
-      width: 100%;
-      padding: 10px;
-      border-radius: 10px;
-      border: none;
-      background: rgba(255,255,255,0.1);
-      color: white;
+    h1 {
+      font-size: 36px;
       margin-bottom: 20px;
-      font-size: 16px;
+      letter-spacing: 1px;
     }
 
-    h2 {
-      margin-bottom: 20px;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 10px;
-      border: none;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      margin-bottom: 15px;
+    p {
+      font-size: 18px;
+      color: #ccc;
+      margin-bottom: 40px;
     }
 
     .btn {
-      width: 100%;
-      padding: 12px;
+      padding: 14px 28px;
       border: none;
-      border-radius: 12px;
+      border-radius: 30px;
       background: #00c6ff;
       color: black;
-      font-weight: bold;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
-      margin-top: 10px;
     }
 
     .btn:hover {
@@ -84,142 +72,72 @@
       color: white;
     }
 
-    .social-login {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-      gap: 10px;
-    }
-
-    .social-btn {
-      flex: 1;
-      padding: 10px;
+    #languageSelector {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 8px;
+      border-radius: 10px;
       border: none;
-      border-radius: 12px;
-      background: white;
-      color: #333;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .social-btn:hover {
-      background: #e0e0e0;
-    }
-
-    .social-btn i {
-      font-size: 20px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
+  <select id="languageSelector">
+    <option value="en">English</option>
+    <option value="de">Deutsch</option>
+    <option value="hr" selected>Hrvatski</option>
+  </select>
+
   <div class="container">
-    <select id="languageSelector">
-      <option value="en">English</option>
-      <option value="de">Deutsch</option>
-      <option value="fr">Français</option>
-      <option value="it">Italiano</option>
-      <option value="es">Español</option>
-      <option value="pt">Português</option>
-      <option value="zh">中文 (Chinese)</option>
-      <option value="ja">日本語 (Japanese)</option>
-      <option value="ru">Русский</option>
-      <option value="ar">العربية</option>
-      <option value="tr">Türkçe</option>
-      <option value="ko">한국어 (Korean)</option>
-      <option value="hi">हिन्दी (Hindi)</option>
-      <option value="nl">Nederlands</option>
-      <option value="pl">Polski</option>
-      <option value="el">Ελληνικά</option>
-      <option value="sr">Српски</option>
-      <option value="bs">Bosanski</option>
-      <option value="mk">Македонски</option>
-      <option value="hr" selected>Hrvatski</option>
-    </select>
-
-    <h2>Sport Talent Analyzer</h2>
-    <p>Prijava / Registracija</p>
-
-    <!-- Klasični login -->
-    <input type="email" id="email" placeholder="Email" required />
-    <input type="password" id="password" placeholder="Lozinka" required />
-    <button class="btn" onclick="manualLogin()">Prijavi se</button>
-
-    <!-- Social logini -->
-    <div class="social-login">
-      <button class="social-btn" onclick="loginWithGoogle()">
-        <i class="fab fa-google"></i> Google
-      </button>
-      <button class="social-btn" onclick="loginWithFacebook()">
-        <i class="fab fa-facebook-f"></i> Facebook
-      </button>
-    </div>
+    <h1 id="welcome_title">Dobrodošli u Sport Talent Analyzer</h1>
+    <p id="welcome_description">Otkrijte svoj puni sportski potencijal. Pametna procjena. Precizna analiza. Personalizirani smjer.</p>
+    <button class="btn" onclick="goToLogin()" id="continue_btn">Nastavi</button>
   </div>
 
   <script>
-    // Firebase config
-    const firebaseConfig = {
-      apiKey: "AIzaSyBz9hxa2y30NEEhqAax3eMTnD6iomQ_Q",
-      authDomain: "sport-talent-analyzer.firebaseapp.com",
-      projectId: "sport-talent-analyzer",
-      storageBucket: "sport-talent-analyzer.appspot.com",
-      messagingSenderId: "621596826994",
-      appId: "1:621596826994:web:b63f65ac30381b76a211eb",
-      measurementId: "G-BB5S03WSJ"
+    const translations = {
+      en: {
+        welcome_title: "Welcome to Sport Talent Analyzer",
+        welcome_description: "Discover your full athletic potential. Smart assessment. Precise analysis. Personalized direction.",
+        continue_btn: "Continue"
+      },
+      de: {
+        welcome_title: "Willkommen bei Sport Talent Analyzer",
+        welcome_description: "Entdecken Sie Ihr sportliches Potenzial. Intelligente Bewertung. Präzise Analyse. Persönliche Empfehlung.",
+        continue_btn: "Weiter"
+      },
+      hr: {
+        welcome_title: "Dobrodošli u Sport Talent Analyzer",
+        welcome_description: "Otkrijte svoj puni sportski potencijal. Pametna procjena. Precizna analiza. Personalizirani smjer.",
+        continue_btn: "Nastavi"
+      }
     };
 
-    const app = firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+    const languageSelector = document.getElementById("languageSelector");
+    const selectedLang = localStorage.getItem("selectedLanguage") || "hr";
+    languageSelector.value = selectedLang;
+    applyTranslations(selectedLang);
 
-    // Jezik
-    document.getElementById('languageSelector').addEventListener('change', function () {
-      localStorage.setItem('selectedLanguage', this.value);
+    languageSelector.addEventListener("change", (e) => {
+      const lang = e.target.value;
+      localStorage.setItem("selectedLanguage", lang);
+      applyTranslations(lang);
     });
 
-    // Prijava email+lozinka
-    function manualLogin() {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      if (!email || !password) {
-        alert("Molimo unesite email i lozinku.");
-        return;
-      }
-
-      localStorage.setItem('userEmail', email);
-      window.location.href = "personal_info_screen.html";
+    function applyTranslations(lang) {
+      const t = translations[lang];
+      document.getElementById("welcome_title").innerText = t.welcome_title;
+      document.getElementById("welcome_description").innerText = t.welcome_description;
+      document.getElementById("continue_btn").innerText = t.continue_btn;
     }
 
-    function loginWithGoogle() {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      auth.signInWithPopup(provider).then((result) => {
-        localStorage.setItem('userEmail', result.user.email);
-        window.location.href = "personal_info_screen.html";
-      }).catch((error) => {
-        console.error(error.message);
-        alert("Greška pri Google prijavi.");
-      });
-    }
-
-    function loginWithFacebook() {
-      const provider = new firebase.auth.FacebookAuthProvider();
-      auth.signInWithPopup(provider).then((result) => {
-        localStorage.setItem('userEmail', result.user.email);
-        window.location.href = "personal_info_screen.html";
-      }).catch((error) => {
-        console.error(error.message);
-        alert("Greška pri Facebook prijavi.");
-      });
+    function goToLogin() {
+      window.location.href = "login.html";
     }
   </script>
 </body>
 </html>
-<script src="translations.js"></script>
-<script src="lang.js"></script>
-<script>
-  applyTranslations();
-</script>
