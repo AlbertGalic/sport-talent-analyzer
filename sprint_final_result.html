@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Rezultat Sprinta</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #1c1c1c; color: white; padding: 20px; }
+    .result { font-size: 24px; margin: 20px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid white; padding: 8px; text-align: center; }
+    th { background-color: #333; }
+    .ocjena { font-size: 20px; margin-top: 20px; color: #00c6ff; }
+  </style>
+</head>
+<body>
+  <h1>📊 Vaš rezultat sprint testa</h1>
+  <div class="result" id="avgResult">Prosjek: -- sekundi</div>
+  <div class="ocjena" id="ocjenaText">Ocjena: --</div>
+
+  <div id="tablica"></div>
+
+<script>
+function evaluate(time, age, gender) {
+  let grade = "Nepoznato";
+  if (age >= 8 && age <= 14) {
+    if (gender === "male") {
+      if (time < 3.4) grade = "Odličan";
+      else if (time <= 3.7) grade = "Dobar";
+      else if (time <= 4.1) grade = "Srednji";
+      else if (time <= 4.5) grade = "Dovoljan";
+      else grade = "Loš";
+    } else {
+      if (time < 3.6) grade = "Odličan";
+      else if (time <= 3.9) grade = "Dobar";
+      else if (time <= 4.3) grade = "Srednji";
+      else if (time <= 4.7) grade = "Dovoljan";
+      else grade = "Loš";
+    }
+  } else {
+    if (gender === "male") {
+      if (time < 3.0) grade = "Odličan";
+      else if (time <= 3.3) grade = "Dobar";
+      else if (time <= 3.7) grade = "Srednji";
+      else if (time <= 4.1) grade = "Dovoljan";
+      else grade = "Loš";
+    } else {
+      if (time < 3.2) grade = "Odličan";
+      else if (time <= 3.5) grade = "Dobar";
+      else if (time <= 3.9) grade = "Srednji";
+      else if (time <= 4.3) grade = "Dovoljan";
+      else grade = "Loš";
+    }
+  }
+  return grade;
+}
+
+const s1 = parseFloat(localStorage.getItem("sprint1") || 0);
+const s2 = parseFloat(localStorage.getItem("sprint2") || 0);
+const s3 = parseFloat(localStorage.getItem("sprint3") || 0);
+const avg = ((s1 + s2 + s3) / 3).toFixed(2);
+document.getElementById("avgResult").innerText = "Prosječno vrijeme: " + avg + " sekundi";
+
+const gender = localStorage.getItem("gender") || "male";
+const age = parseInt(localStorage.getItem("age") || 20);
+const ocjena = evaluate(avg, age, gender);
+document.getElementById("ocjenaText").innerText = "Ocjena: " + ocjena;
+</script>
+</body>
+</html>
