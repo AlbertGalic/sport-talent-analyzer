@@ -15,3 +15,6 @@ const translations = {
     continue: "Test starten"
   }
 };
+personal_info_title: "Unesite osobne podatke",
+continue_button: "Nastavi",
+option_male: "Muško"
