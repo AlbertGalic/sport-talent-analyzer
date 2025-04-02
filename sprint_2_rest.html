@@ -1,1 +1,33 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Pauza 2</title><script>setTimeout(() => { window.location.href='sprint_3_input.html'; }, 300000);</script></head><body><h1>Odmor 5 minuta nakon sprinta 2...</h1></body></html>
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Odmor nakon sprinta 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="lang.js"></script>
+  <script src="translations.js"></script>
+</head>
+<body class="bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white font-['Lexend'] min-h-screen flex items-center justify-center p-4">
+  <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl shadow-lg max-w-md w-full text-center space-y-6">
+    <h1 id="rest_title" class="text-2xl font-bold">Odmor 5 minuta</h1>
+    <p id="rest_description">Molimo pričekajte 5 minuta za oporavak prije sljedećeg pokušaja.</p>
+    <div class="text-4xl font-mono" id="timer">05:00</div>
+  </div>
+  <script>
+    applyTranslations();
+    let duration = 300;
+    const timerElement = document.getElementById('timer');
+    const interval = setInterval(() => {
+      const minutes = Math.floor(duration / 60);
+      const seconds = duration % 60;
+      timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+      if (--duration < 0) {
+        clearInterval(interval);
+        window.location.href = 'sprint_3_input.html';
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
