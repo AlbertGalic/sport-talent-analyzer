@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sprint 1 - Unos vremena</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="lang.js"></script>
+  <script src="translations.js"></script>
+</head>
+<body class="bg-gradient-to-br from-[#0f2027] via-[#203a43] to-[#2c5364] text-white font-['Lexend'] min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl shadow-lg max-w-md w-full text-center space-y-6">
+    <h1 id="sprint1_title" class="text-2xl font-bold">Unesite vrijeme Sprinta 1</h1>
+
+    <input type="number" id="sprint1" placeholder="Vrijeme u sekundama"
+      class="w-full px-4 py-3 rounded-xl bg-white/10 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-cyan-400"/>
+
+    <button onclick="saveSprint1()" id="confirm_button"
+      class="w-full bg-cyan-400 hover:bg-cyan-500 text-black font-semibold py-3 rounded-xl transition">
+      Potvrdi i nastavi
+    </button>
+  </div>
+
+  <script>
+    applyTranslations();
+
+    function saveSprint1() {
+      const time = document.getElementById('sprint1').value;
+      if (time === '' || isNaN(time)) {
+        alert('Unesite ispravno vrijeme u sekundama.');
+        return;
+      }
+      localStorage.setItem('sprint1', time);
+      window.location.href = 'sprint_1_rest.html';
+    }
+  </script>
+</body>
+</html>
