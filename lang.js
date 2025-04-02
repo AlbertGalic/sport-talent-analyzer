@@ -3,6 +3,14 @@ function applyTranslations() {
   const t = translations[lang];
   for (const id in t) {
     const el = document.getElementById(id);
-    if (el) el.placeholder ? el.placeholder = t[id] : el.innerText = t[id];
+    if (el) {
+      if (el.placeholder !== undefined) {
+        el.placeholder = t[id];
+      } else if (el.tagName === "OPTION") {
+        el.textContent = t[id];
+      } else {
+        el.innerText = t[id];
+      }
+    }
   }
 }
