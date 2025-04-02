@@ -3,56 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Sprint Test - Upute</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Sprint Test Uvod</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     body {
       font-family: 'Lexend', sans-serif;
       background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
       color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
       padding: 20px;
-      text-align: center;
     }
 
     .container {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 40px;
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255,255,255,0.05);
+      padding: 30px;
       border-radius: 20px;
-      max-width: 600px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
     }
 
-    h2 {
+    h1 {
+      text-align: center;
       margin-bottom: 20px;
     }
 
-    p {
-      font-size: 16px;
-      color: #ccc;
-      margin-bottom: 30px;
-      line-height: 1.6;
+    .section {
+      margin-bottom: 20px;
     }
 
-    .btn {
-      padding: 12px 24px;
+    .section h3 {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section ul {
+      padding-left: 20px;
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+      vertical-align: middle;
+    }
+
+    .btn-start {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background: #00c6ff;
       border: none;
       border-radius: 12px;
-      background: #00c6ff;
-      color: black;
+      font-size: 18px;
       font-weight: bold;
-      font-size: 16px;
+      color: black;
+      text-align: center;
+      margin-top: 30px;
       cursor: pointer;
       transition: 0.3s;
     }
 
-    .btn:hover {
+    .btn-start:hover {
       background: #0072ff;
       color: white;
     }
@@ -60,9 +74,44 @@
 </head>
 <body>
   <div class="container">
-    <h2 id="sprint_intro_title"></h2>
-    <p id="sprint_intro_description"></p>
-    <button class="btn" onclick="startTest()" id="continue"></button>
+    <h1 id="sprint_title">🏃‍♂️ Sprint Test – 20 metara</h1>
+
+    <div class="section">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/1055/1055687.png" class="icon"> <span id="goal_title">Cilj testa</span></h3>
+      <p id="goal_text">Procjena brzine i eksplozivnosti trkača na kratkoj distanci.</p>
+    </div>
+
+    <div class="section">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/1063/1063195.png" class="icon"> <span id="equipment_title">Oprema</span></h3>
+      <ul>
+        <li id="equipment_1">Ravan teren (atletska staza ili dvorana)</li>
+        <li id="equipment_2">Metar za mjerenje udaljenosti 20 m</li>
+        <li id="equipment_3">Štoperica ili aplikacija za mjerenje</li>
+        <li id="equipment_4">Startna i ciljna linija jasno označene</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/1828/1828919.png" class="icon"> <span id="procedure_title">Postupak</span></h3>
+      <ul>
+        <li id="procedure_1">Zagrijavanje (5–10 min dinamičkog zagrijavanja)</li>
+        <li id="procedure_2">Start iz stajaće pozicije iza linije</li>
+        <li id="procedure_3">Sprint maksimalnim intenzitetom 20 m</li>
+        <li id="procedure_4">Vrijeme se mjeri od prvog pokreta</li>
+        <li id="procedure_5">Test se ponavlja 3 puta – bilježi se prosjek</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3><img src="https://cdn-icons-png.flaticon.com/512/753/753318.png" class="icon"> <span id="notes_title">Napomene</span></h3>
+      <ul>
+        <li id="note_1">Pauza 5 minuta između pokušaja</li>
+        <li id="note_2">Sprint bez lažnog starta</li>
+        <li id="note_3">Preporučeno da vrijeme mjeri druga osoba</li>
+      </ul>
+    </div>
+
+    <button class="btn-start" onclick="startTest()" id="start_test_button">Započni test</button>
   </div>
 
   <script src="translations.js"></script>
@@ -75,8 +124,3 @@
   </script>
 </body>
 </html>
-<script src="translations.js"></script>
-<script src="lang.js"></script>
-<script>
-  applyTranslations();
-</script>
